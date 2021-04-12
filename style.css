@@ -1,0 +1,85 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header {
+  background-color: #5aabaf;
+  color: white;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+.list-wrapper {
+  height: 75%;
+}
+
+.list-wrapper ul li {
+  border-bottom: 1px solid #ccc;
+  padding: 20px;
+  position: relative;
+}
+
+.list-wrapper ul li span {
+  position: absolute;
+  right: 20px;
+}
+
+.buttons-wrapper {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-wrapper .button-add {
+  background-color: #5aabaf;
+  color: white;
+  width: 100px;
+  border-radius: 50px;
+  text-align: center;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.input-wrapper {
+  height: 10%;
+  width: 100%;
+  display: flex;
+}
+
+.input-wrapper .button-submit {
+  display: inline-block;
+  margin: 0;
+  width: 20%;
+  background-color: #5aabaf;
+  justify-content: center;
+  color: white;
+  align-items: center;
+  display: flex;
+
+}
+
+.input-wrapper input {
+  width: 80%;
+}
+
+.hidden {
+  display: none;
+}
