@@ -36,9 +36,10 @@ h1 {
   position: relative;
 }
 
-.list-wrapper ul li span {
+.list-wrapper ul li .delete {
   position: absolute;
   right: 20px;
+  cursor: pointer;
 }
 
 .buttons-wrapper {
