@@ -3,15 +3,35 @@ let buttonSubmit = document.querySelector('.button-submit');
 
 let inputWrapper = document.querySelector('.input-wrapper');
 let buttonsWrapper = document.querySelector('.buttons-wrapper');
+let listWrapper = document.querySelector('.list-wrapper');
 
-let list = document.querySelector('ul');
+let listData = JSON.parse(localStorage.getItem('listData') || '[]');
+let list = createList(listData);
 let input = document.querySelector('input');
 
-for (let listItem of list.children) {
-  let itemDelete = listItem.querySelector('.delete');
-  itemDelete.onclick = function (evt) {
-    evt.target.parentNode.remove()
-  }
+function createList(data) {
+  let result = document.createElement('ul');
+  listWrapper.append(result);
+  data.forEach((listDataItem, index) => {
+    if (!listDataItem) return;
+
+    let item = document.createElement('li');
+    item.textContent = listDataItem;
+    let itemDelete = document.createElement('span');
+    itemDelete.classList.add('delete');
+    itemDelete.textContent = 'X';
+    itemDelete.onclick = function (evt) {
+      let listData = JSON.parse(localStorage.getItem('listData') || '[]');
+      listData = listData.filter((el) => el && (el !== listDataItem))
+      localStorage.setItem('listData', JSON.stringify(listData));
+
+      evt.target.parentNode.remove()
+    };
+
+    item.append(itemDelete);
+    result.append(item);
+  })
+  return result;
 }
 
 buttonAdd.onclick = function() {
@@ -21,17 +41,12 @@ buttonAdd.onclick = function() {
 
 buttonSubmit.onclick = function() {
   if (input.value) {
-    let item = document.createElement('li');
-    item.textContent = input.value;
-    let itemDelete = document.createElement('span');
-    itemDelete.classList.add('delete');
-    itemDelete.textContent = 'X';
-    itemDelete.onclick = function (evt) {
-      evt.target.parentNode.remove()
-    };
+    let listData = JSON.parse(localStorage.getItem('listData') || '[]');
+    let newListData = listData.concat(input.value);
+    localStorage.setItem('listData', JSON.stringify(newListData));
 
-    item.append(itemDelete);
-    list.append(item);
+    list.remove();
+    list = createList(newListData)
 
     input.value = '';
   }
