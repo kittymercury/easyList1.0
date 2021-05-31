@@ -40,6 +40,7 @@ h1 {
 .list-wrapper ul li .delete {
   position: absolute;
   right: 20px;
+  bottom: 17px;
   cursor: pointer;
 }
 
@@ -58,12 +59,20 @@ h1 {
   text-align: center;
   padding: 10px 20px;
   cursor: pointer;
+  position: fixed;
+  bottom: 0px;
 }
 
 .input-wrapper {
   height: 10%;
   width: 100%;
   display: flex;
+  position: fixed;
+  bottom: 0px;
+}
+
+input[type="text"] {
+  font-size: x-large;
 }
 
 .input-wrapper .button-submit {
@@ -75,12 +84,12 @@ h1 {
   color: white;
   align-items: center;
   display: flex;
-
 }
 
 .input-wrapper input {
   width: 80%;
 }
+
 
 .hidden {
   display: none;
