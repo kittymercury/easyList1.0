@@ -7,6 +7,8 @@ let listWrapper = document.querySelector('.list-wrapper');
 
 let input = document.querySelector('input');
 
+// DATA LOGICS
+// =================================================
 function selectData() {
   let data = localStorage.getItem('data');
   if (!data) {
@@ -28,6 +30,9 @@ function deleteData(string) {
   localStorage.setItem('data', data);
   return data;
 }
+
+// RENDERING LOGICS
+// =================================================
 
 function renderData(data) {
   let list = document.querySelector('.list');
@@ -51,6 +56,9 @@ function renderData(data) {
   listWrapper.append(list);
 }
 
+// LISTENERS LOGICS
+// ================================================
+
 buttonAdd.onclick = function() {
   buttonsWrapper.classList.add('hidden');
   inputWrapper.classList.remove('hidden');
@@ -66,5 +74,8 @@ buttonSubmit.onclick = function() {
   buttonsWrapper.classList.remove('hidden');
   inputWrapper.classList.add('hidden');
 };
+
+// RUN FUNCTIONS
+// =================================================
 
 renderData(selectData())
