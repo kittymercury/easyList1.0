@@ -34,10 +34,15 @@ function createList(data) {
   return result;
 }
 
-buttonAdd.onclick = function() {
+
+
+buttonAdd.onclick function() {
   buttonsWrapper.classList.add('hidden');
   inputWrapper.classList.remove('hidden');
 }
+
+
+
 
 buttonSubmit.onclick = function() {
   if (input.value) {
