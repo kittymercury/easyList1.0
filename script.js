@@ -36,12 +36,11 @@ function createList(data) {
 
 
 
-buttonAdd.onclick function() {
+buttonAdd.onclick = function() {
   buttonsWrapper.classList.add('hidden');
   inputWrapper.classList.remove('hidden');
+  input.focus();
 }
-
-
 
 
 buttonSubmit.onclick = function() {
