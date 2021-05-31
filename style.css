@@ -14,8 +14,9 @@ ul {
 }
 
 header {
-  background: linear-gradient(to bottom, white, #5aabaf);
+  background: linear-gradient(to bottom, white, #9cdfe2, #5aabaf);
   /* background-color: #5aabaf; */
+  font-size: x-large;
   color: white;
   height: 15%;
   display: flex;
