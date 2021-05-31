@@ -5,36 +5,51 @@ let inputWrapper = document.querySelector('.input-wrapper');
 let buttonsWrapper = document.querySelector('.buttons-wrapper');
 let listWrapper = document.querySelector('.list-wrapper');
 
-let listData = JSON.parse(localStorage.getItem('listData') || '[]');
-let list = createList(listData);
 let input = document.querySelector('input');
 
-function createList(data) {
-  let result = document.createElement('ul');
-  listWrapper.append(result);
-  data.forEach((listDataItem, index) => {
-    if (!listDataItem) return;
+function selectData() {
+  let data = localStorage.getItem('data');
+  if (!data) {
+    return []
+  }
+  return data.split(',')
+}
 
+function updateData(string) {
+  let data = selectData();
+  data.push(string);
+  localStorage.setItem('data', data);
+  return data;
+}
+
+function deleteData(string) {
+  let data = selectData();
+  data = data.filter((el) => !['', string].includes(el))
+  localStorage.setItem('data', data);
+  return data;
+}
+
+function renderData(data) {
+  let list = document.querySelector('.list');
+  list.remove()
+  list = document.createElement('ul');
+  list.classList.add('list');
+
+  data.forEach((string) => {
     let item = document.createElement('li');
-    item.textContent = listDataItem;
+    item.textContent = string;
     let itemDelete = document.createElement('span');
     itemDelete.classList.add('delete');
     itemDelete.textContent = '✖';
     itemDelete.onclick = function (evt) {
-      let listData = JSON.parse(localStorage.getItem('listData') || '[]');
-      listData = listData.filter((el) => el && (el !== listDataItem))
-      localStorage.setItem('listData', JSON.stringify(listData));
-
-      evt.target.parentNode.remove()
+      renderData(deleteData(string))
     };
-
     item.append(itemDelete);
-    result.append(item);
+    list.append(item);
   })
-  return result;
+
+  listWrapper.append(list);
 }
-
-
 
 buttonAdd.onclick = function() {
   buttonsWrapper.classList.add('hidden');
@@ -42,18 +57,13 @@ buttonAdd.onclick = function() {
   input.focus();
 }
 
-
 buttonSubmit.onclick = function() {
   if (input.value) {
-    let listData = JSON.parse(localStorage.getItem('listData') || '[]');
-    let newListData = listData.concat(input.value);
-    localStorage.setItem('listData', JSON.stringify(newListData));
-
-    list.remove();
-    list = createList(newListData)
-
+    renderData(updateData(input.value))
     input.value = '';
   }
   buttonsWrapper.classList.remove('hidden');
   inputWrapper.classList.add('hidden');
 };
+
+renderData(selectData())
