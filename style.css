@@ -60,7 +60,7 @@ h1 {
   padding: 10px 20px;
   cursor: pointer;
   position: fixed;
-  bottom: 0px;
+  bottom: 10px;
 }
 
 .input-wrapper {
@@ -68,7 +68,7 @@ h1 {
   width: 100%;
   display: flex;
   position: fixed;
-  bottom: 0px;
+  bottom: 10px;
 }
 
 input[type="text"] {
