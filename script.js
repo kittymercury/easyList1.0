@@ -58,8 +58,9 @@ buttonAdd.onclick = function() {
 }
 
 buttonSubmit.onclick = function() {
-  if (input.value) {
-    renderData(updateData(input.value))
+  let value = (input.value || '').trim();
+  if (value) {
+    renderData(updateData(value))
     input.value = '';
   }
   buttonsWrapper.classList.remove('hidden');
