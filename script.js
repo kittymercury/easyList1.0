@@ -19,7 +19,7 @@ function createList(data) {
     item.textContent = listDataItem;
     let itemDelete = document.createElement('span');
     itemDelete.classList.add('delete');
-    itemDelete.textContent = 'X';
+    itemDelete.textContent = '✖';
     itemDelete.onclick = function (evt) {
       let listData = JSON.parse(localStorage.getItem('listData') || '[]');
       listData = listData.filter((el) => el && (el !== listDataItem))
