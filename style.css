@@ -14,7 +14,8 @@ ul {
 }
 
 header {
-  background-color: #5aabaf;
+  background: linear-gradient(to bottom, white, #5aabaf);
+  /* background-color: #5aabaf; */
   color: white;
   height: 15%;
   display: flex;
